@@ -1,0 +1,72 @@
+body {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  background-color: #296EB4;
+  color: white;
+}
+
+#wrapper {
+  max-width: 800px;
+  min-width: 400px;
+  margin: 20px auto;
+  position: relative;
+}
+
+#header {
+  margin: 20px auto;
+}
+
+#stats,
+#filters {
+  border: 1px solid white;
+  width: 200px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+#filters div {
+  display: block;
+}
+
+#stats span {
+  display: block;
+}
+
+#grid {
+  margin: 20px auto;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50px);
+  gap: 1px;
+  justify-content: center;
+  padding: 15px 5px;
+}
+
+.day {
+  /*background-color: #E6E6E6;*/
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day div {
+  flex: 1 1 auto;
+  width: 100%
+}
+
+.sick_boy {
+  /*background-color: #FE4A49;*/
+  background-color: #B1740F;
+}
+
+.sick_mama {
+  /*background-color: #2AB7CA;*/
+  background-color: #FFD07B;
+}
+
+.sick_papa {
+  /*background-color: #FED766;*/
+  background-color: #FDB833;
+}

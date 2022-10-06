@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='./resources/css/reset.css' rel='stylesheet'>
+    <link href='./resources/css/style.css' rel='stylesheet'>
+  </head>
+
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <p>My boy started school.<br>
+        My boy is sick.<br>
+        How sick?<br>
+        This much:</p>
+      </div>
+
+      <div id="filters">
+        <form>
+          <div>
+            <input type="checkbox" id="my_boy_is_sick" name="my_boy">
+            <label for="my_boy_is_sick">My boy</label>
+          </div>
+          <div>
+            <input type="checkbox" id="papa_is_sick" name="papa">
+            <label for="papa_is_sick">Papa</label>
+          </div>
+          <div>
+            <input type="checkbox" id="mama_is_sick" name="mama">
+            <label for="mama_is_sick">Mama</label>
+          </div>
+        </form>
+      </div>
+
+      <div id="stats">
+        <span>S: 17</span>
+        <span>W: 33</span>
+        <span>.SAVG: .340</span>
+        <span>S/W Ratio: .510</span>
+        <span>Last 10: 2-8</span>
+      </div>
+
+      <div id="grid">
+          <!--Week 1-->
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>      
+
+          <!-- Week 4 -->
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+
+          <!-- Week 5 -->
+          <div class="day">
+            <div class="sick_boy"></div>
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+
+          <!-- Week 6 -->
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+
+          <!-- Week 7 -->
+          <div class="day">
+            <div class="sick_mama"></div>
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+          </div>
+
+          <!-- Week 8 -->
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_boy"></div>
+            <div class="sick_mama"></div>
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_papa"></div>
+          </div>
+
+          <!-- Week 9 -->
+          <div class="day">
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+            <div class="sick_papa"></div>
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+          <div class="day">
+          </div>
+      </div>
+
+    </div>
+  </body>
+</html>
