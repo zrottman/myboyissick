@@ -9,6 +9,7 @@ body {
   max-width: 800px;
   min-width: 400px;
   margin: 20px auto;
+  padding: 0 20px;
   position: relative;
 }
 
@@ -19,17 +20,31 @@ body {
 #stats,
 #filters {
   border: 1px solid white;
-  width: 200px;
+  width: 400px;
   padding: 15px;
   margin: 20px 0;
 }
 
-#filters div {
-  display: block;
+#filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  justify-content: center;
 }
 
 #stats span {
   display: block;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid #1C1D21;
+  margin: 10px 0;
+  width: 100%;
+  padding: 15px;
+  color: #1C1D21;
+  font-weight: 900;
+  text-align: center;
 }
 
 #grid {
@@ -56,17 +71,17 @@ body {
   width: 100%
 }
 
-.sick_boy {
-  /*background-color: #FE4A49;*/
+.sickBoy,
+#boyButton {
   background-color: #B1740F;
 }
 
-.sick_mama {
-  /*background-color: #2AB7CA;*/
+.sickMama,
+#mamaButton {
   background-color: #FFD07B;
 }
 
-.sick_papa {
-  /*background-color: #FED766;*/
+.sickPapa,
+#papaButton {
   background-color: #FDB833;
 }
