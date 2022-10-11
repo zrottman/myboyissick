@@ -50,6 +50,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
           });
       }
     </script>
+    <title>He's sick!</title>
   </head>
 
   <body>
@@ -90,9 +91,9 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
         $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
 
         echo '<div></div>';
-        echo '<div class="bold">Record (S-W)</div>';
-        echo '<div class="bold">.SAVG</div>';
-        echo '<div class="bold">S/W Ratio</div>';
+        echo '<div class="bold tooltip">Record (S-NS)<span class="tooltiptext">S: days sick<br>NS: days not sick</span></div>';
+        echo '<div class="bold tooltip">.SAVG<span class="tooltiptext">S / (S + NS)</span></div>';
+        echo '<div class="bold tooltip">S/NS Ratio<span class="tooltiptext">S / NS</span></div>';
 
         echo '<div class="bold">My boy</div>';
         echo '<div>' . $stats['s_b'] . '-' . $stats['w_b'] . '</div>';

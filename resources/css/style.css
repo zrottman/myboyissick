@@ -92,3 +92,26 @@ body {
 .bold {
   font-weight: 900;
 }
+
+.tooltiptext {
+  visibility: hidden;
+  z-index: 1;
+  position: absolute;
+  background-color: white;
+  color: #1C1D21;
+  padding: 5px;
+  width: 120px;
+  border: 1px dotted #1C1D21;
+  opacity: 0.7;
+  top: 15px;
+  left: 0;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip {
+  position: relative;
+  cursor: help;
+}
