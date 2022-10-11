@@ -56,20 +56,17 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
   <body>
     <div id="wrapper">
 
-
       <div id="header">
         <p>My boy started school.<br>
         My boy is sick.<br>
         How sick?</p>
       </div>
 
-
       <div id="filters">
         <div id="boyButton" class="button" onclick="toggle('#boyButton', '.sickBoy');">My boy</div>
         <div id="papaButton" class="button" onclick="toggle('#papaButton', '.sickPapa');">Papa</div>
         <div id="mamaButton" class="button" onclick="toggle('#mamaButton', '.sickMama');">Mama</div>
       </div>
-
 
       <div id="grid">
       <?php
@@ -79,7 +76,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
                 if($row['myboy']) {echo '<div class="sickBoy"></div>';}
                 if($row['papa']) {echo '<div class="sickPapa"></div>';}
                 if($row['mama']) {echo '<div class="sickMama"></div>';}
-            echo '</div>';
+            echo "</div>\n";
         }
 
       ?>
@@ -90,15 +87,15 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
       <?php
         $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
 
-        echo '<div></div>';
-        echo '<div class="bold tooltip">Record (S-NS)<span class="tooltiptext">S: days sick<br>NS: days not sick</span></div>';
-        echo '<div class="bold tooltip">.SAVG<span class="tooltiptext">S / (S + NS)</span></div>';
-        echo '<div class="bold tooltip">S/NS Ratio<span class="tooltiptext">S / NS</span></div>';
+        echo "<div></div>\n";
+        echo "<div class=\"bold tooltip\">Record (S-NS)<span class=\"tooltiptext\">S: days sick<br>NS: days not sick</span></div>\n";
+        echo "<div class=\"bold tooltip\">.SAVG<span class=\"tooltiptext\">S / (S + NS)</span></div>\n";
+        echo "<div class=\"bold tooltip\">S/NS Ratio<span class=\"tooltiptext\">S / NS</span></div>\n";
 
-        echo '<div class="bold">My boy</div>';
-        echo '<div>' . $stats['s_b'] . '-' . $stats['w_b'] . '</div>';
-        echo '<div>' . $stats['savg_b'] . '</div>';
-        echo '<div>' . $stats['sw_b'] . '</div>';
+        echo "<div class=\"bold\">My boy</div>\n";
+        echo "<div>" . $stats['s_b'] . "-" . $stats['w_b'] . "</div>\n";
+        echo "<div>" . $stats['savg_b'] . "</div>\n";
+        echo "<div>" . $stats['sw_b'] . "</div>\n";
 
         echo '<div class="bold">Papa</div>';
         echo '<div>' . $stats['s_p'] . '-' . $stats['w_p'] . '</div>';
