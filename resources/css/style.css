@@ -45,6 +45,7 @@ body {
   color: #1C1D21;
   font-weight: 900;
   text-align: center;
+  cursor: pointer;
 }
 
 #grid {
