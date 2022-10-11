@@ -22,27 +22,7 @@ $q_stats = "SELECT
                 SUM(mama) AS s_m,
                 COUNT(*) - SUM(mama) AS w_m,
                 AVG(mama) AS savg_m,
-                SUM(mama) / (COUNT(*) - SUM(mama)) AS sw_m,
-
-                SUM(myboy OR papa) AS s_bp,
-                COUNT(*) - SUM(myboy OR papa) AS w_bp,
-                AVG(myboy OR papa) AS savg_bp,
-                SUM(myboy OR papa) / (COUNT(*) - SUM(myboy OR papa)) AS sw_bp,
-
-                SUM(myboy OR mama) AS s_bm,
-                COUNT(*) - SUM(myboy OR mama) AS w_bm,
-                AVG(myboy OR mama) AS savg_bm,
-                SUM(myboy OR mama) / (COUNT(*) - SUM(myboy OR mama)) AS sw_bm,
-
-                SUM(papa OR mama) AS s_pm,
-                COUNT(*) - SUM(papa OR mama) AS w_pm,
-                AVG(papa OR mama) AS savg_pm,
-                SUM(papa OR mama) / (COUNT(*) - SUM(papa OR mama)) AS sw_pm,
-
-                SUM(myboy OR papa OR mama) AS s_bpm,
-                COUNT(*) - SUM(myboy OR papa OR mama) AS w_bpm,
-                AVG(myboy OR papa OR mama) AS savg_bpm,
-                SUM(myboy OR papa OR mama) / (COUNT(*) - SUM(myboy OR papa OR mama)) AS sw_bpm
+                SUM(mama) / (COUNT(*) - SUM(mama)) AS sw_m
             FROM sick";
 $r_stats = @mysqli_query ($dbc, $q_stats);
 
@@ -75,11 +55,13 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
   <body>
     <div id="wrapper">
 
+
       <div id="header">
         <p>My boy started school.<br>
         My boy is sick.<br>
         How sick?</p>
       </div>
+
 
       <div id="filters">
         <div id="boyButton" class="button" onclick="toggle('#boyButton', '.sickBoy');">My boy</div>
@@ -87,20 +69,9 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
         <div id="mamaButton" class="button" onclick="toggle('#mamaButton', '.sickMama');">Mama</div>
       </div>
 
-      <div id="stats">
-      <?php
-        $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
-        echo '<span>S: ' . $stats['s_b'] . '</span>';
-        echo '<span>W: ' . $stats['w_b'] . '</span>';
-        echo '<span>Record: ' . $stats['s_b'] . '-' . $stats['w_b'] . '</span>';
-        echo '<span>.SAVG ' . $stats['savg_b'] . '</span>';
-        echo '<span>S/W Ratio: ' . $stats['sw_b'] . '</span>';
-      ?>
-      </div>
 
       <div id="grid">
       <?php
-
 
         while ($row = mysqli_fetch_array($r_grid, MYSQLI_ASSOC)) {
             echo '<div class="day">';
@@ -110,9 +81,40 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
             echo '</div>';
         }
 
-        mysqli_close($dbc);
       ?>
       </div>
+
+
+      <div id="stats">
+      <?php
+        $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
+
+        echo '<div></div>';
+        echo '<div class="bold">Record (S-W)</div>';
+        echo '<div class="bold">.SAVG</div>';
+        echo '<div class="bold">S/W Ratio</div>';
+
+        echo '<div class="bold">My boy</div>';
+        echo '<div>' . $stats['s_b'] . '-' . $stats['w_b'] . '</div>';
+        echo '<div>' . $stats['savg_b'] . '</div>';
+        echo '<div>' . $stats['sw_b'] . '</div>';
+
+        echo '<div class="bold">Papa</div>';
+        echo '<div>' . $stats['s_p'] . '-' . $stats['w_p'] . '</div>';
+        echo '<div>' . $stats['savg_p'] . '</div>';
+        echo '<div>' . $stats['sw_p'] . '</div>';
+
+        echo '<div class="bold">Mama</div>';
+        echo '<div>' . $stats['s_m'] . '-' . $stats['w_m'] . '</div>';
+        echo '<div>' . $stats['savg_m'] . '</div>';
+        echo '<div>' . $stats['sw_m'] . '</div>';
+
+      ?>
+      </div>
+      
+      <?php
+        mysqli_close($dbc);
+      ?>
 
     </div>
   </body>

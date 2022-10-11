@@ -6,8 +6,8 @@ body {
 }
 
 #wrapper {
-  max-width: 800px;
-  min-width: 400px;
+  max-width: 600px;
+  min-width: 200px;
   margin: 20px auto;
   padding: 0 20px;
   position: relative;
@@ -20,20 +20,22 @@ body {
 #stats,
 #filters {
   border: 1px solid white;
-  width: 400px;
   padding: 15px;
   margin: 20px 0;
+  display: grid;
 }
 
 #filters {
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   justify-content: center;
 }
 
-#stats span {
-  display: block;
+#stats {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3px;
+  background-color: white;
+  color: #296EB4;
 }
 
 .button {
@@ -85,4 +87,8 @@ body {
 .sickPapa,
 #papaButton {
   background-color: #FDB833;
+}
+
+.bold {
+  font-weight: 900;
 }
