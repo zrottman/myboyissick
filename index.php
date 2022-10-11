@@ -3,8 +3,48 @@
 # Connect to DB
 require_once ('../../dbconnect/mysqli_connect_myboyissick.php');
 
-$q = "SELECT myboy, papa, mama FROM sick";
-$r = @mysqli_query ($dbc, $q);
+# Grid generation query
+$q_grid = "SELECT myboy, papa, mama FROM sick";
+$r_grid = @mysqli_query ($dbc, $q_grid);
+
+# Stats query
+$q_stats = "SELECT
+                SUM(myboy) AS s_b,
+                COUNT(*) - SUM(myboy) AS w_b,
+                AVG(myboy) AS savg_b,
+                SUM(myboy) / (COUNT(*) - SUM(myboy)) AS sw_b,
+
+                SUM(papa) AS s_p,
+                COUNT(*) - SUM(papa) AS w_p,
+                AVG(papa) AS savg_p,
+                SUM(papa) / (COUNT(*) - SUM(papa)) AS sw_p,
+
+                SUM(mama) AS s_m,
+                COUNT(*) - SUM(mama) AS w_m,
+                AVG(mama) AS savg_m,
+                SUM(mama) / (COUNT(*) - SUM(mama)) AS sw_m,
+
+                SUM(myboy OR papa) AS s_bp,
+                COUNT(*) - SUM(myboy OR papa) AS w_bp,
+                AVG(myboy OR papa) AS savg_bp,
+                SUM(myboy OR papa) / (COUNT(*) - SUM(myboy OR papa)) AS sw_bp,
+
+                SUM(myboy OR mama) AS s_bm,
+                COUNT(*) - SUM(myboy OR mama) AS w_bm,
+                AVG(myboy OR mama) AS savg_bm,
+                SUM(myboy OR mama) / (COUNT(*) - SUM(myboy OR mama)) AS sw_bm,
+
+                SUM(papa OR mama) AS s_pm,
+                COUNT(*) - SUM(papa OR mama) AS w_pm,
+                AVG(papa OR mama) AS savg_pm,
+                SUM(papa OR mama) / (COUNT(*) - SUM(papa OR mama)) AS sw_pm,
+
+                SUM(myboy OR papa OR mama) AS s_bpm,
+                COUNT(*) - SUM(myboy OR papa OR mama) AS w_bpm,
+                AVG(myboy OR papa OR mama) AS savg_bpm,
+                SUM(myboy OR papa OR mama) / (COUNT(*) - SUM(myboy OR papa OR mama)) AS sw_bpm
+            FROM sick";
+$r_stats = @mysqli_query ($dbc, $q_stats);
 
 ?>
 
@@ -48,16 +88,21 @@ $r = @mysqli_query ($dbc, $q);
       </div>
 
       <div id="stats">
-        <span>S: 17</span>
-        <span>W: 33</span>
-        <span>.SAVG: .340</span>
-        <span>S/W Ratio: .510</span>
-        <span>Last 10: 2-8</span>
+      <?php
+        $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
+        echo '<span>S: ' . $stats['s_b'] . '</span>';
+        echo '<span>W: ' . $stats['w_b'] . '</span>';
+        echo '<span>Record: ' . $stats['s_b'] . '-' . $stats['w_b'] . '</span>';
+        echo '<span>.SAVG ' . $stats['savg_b'] . '</span>';
+        echo '<span>S/W Ratio: ' . $stats['sw_b'] . '</span>';
+      ?>
       </div>
 
       <div id="grid">
       <?php
-        while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+
+
+        while ($row = mysqli_fetch_array($r_grid, MYSQLI_ASSOC)) {
             echo '<div class="day">';
                 if($row['myboy']) {echo '<div class="sickBoy"></div>';}
                 if($row['papa']) {echo '<div class="sickPapa"></div>';}
@@ -67,202 +112,6 @@ $r = @mysqli_query ($dbc, $q);
 
         mysqli_close($dbc);
       ?>
-      <!--
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>      
-
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickBoy"></div>
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickMama"></div>
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickBoy"></div>
-            <div class="sickMama"></div>
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickPapa"></div>
-          </div>
-
-          <div class="day">
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-            <div class="sickPapa"></div>
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          <div class="day">
-          </div>
-          -->
       </div>
 
     </div>
