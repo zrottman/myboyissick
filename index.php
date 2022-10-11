@@ -1,3 +1,14 @@
+<?php # index.php
+
+# Connect to DB
+require_once ('../../dbconnect/mysqli_connect_myboyissick.php');
+
+$q = "SELECT myboy, papa, mama FROM sick";
+$r = @mysqli_query ($dbc, $q);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +56,18 @@
       </div>
 
       <div id="grid">
-          <!--Week 1-->
+      <?php
+        while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+            echo '<div class="day">';
+                if($row['myboy']) {echo '<div class="sickBoy"></div>';}
+                if($row['papa']) {echo '<div class="sickPapa"></div>';}
+                if($row['mama']) {echo '<div class="sickMama"></div>';}
+            echo '</div>';
+        }
+
+        mysqli_close($dbc);
+      ?>
+      <!--
           <div class="day">
           </div>
           <div class="day">
@@ -68,7 +90,6 @@
             <div class="sickMama"></div>
           </div>
 
-          <!-- Week 2 -->
           <div class="day">
             <div class="sickMama"></div>
           </div>
@@ -91,7 +112,6 @@
             <div class="sickMama"></div>
           </div>
 
-          <!-- Week 3 -->
           <div class="day">
             <div class="sickMama"></div>
           </div>
@@ -108,7 +128,6 @@
           <div class="day">
           </div>      
 
-          <!-- Week 4 -->
           <div class="day">
           </div>
           <div class="day">
@@ -131,7 +150,6 @@
             <div class="sickMama"></div>
           </div>
 
-          <!-- Week 5 -->
           <div class="day">
             <div class="sickBoy"></div>
           </div>
@@ -152,7 +170,6 @@
             <div class="sickPapa"></div>
           </div>
 
-          <!-- Week 6 -->
           <div class="day">
             <div class="sickBoy"></div>
             <div class="sickMama"></div>
@@ -181,7 +198,6 @@
             <div class="sickMama"></div>
           </div>
 
-          <!-- Week 7 -->
           <div class="day">
             <div class="sickMama"></div>
           </div>
@@ -199,7 +215,6 @@
             <div class="sickBoy"></div>
           </div>
 
-          <!-- Week 8 -->
           <div class="day">
             <div class="sickBoy"></div>
             <div class="sickPapa"></div>
@@ -230,7 +245,6 @@
             <div class="sickPapa"></div>
           </div>
 
-          <!-- Week 9 -->
           <div class="day">
             <div class="sickPapa"></div>
           </div>
@@ -248,6 +262,7 @@
           </div>
           <div class="day">
           </div>
+          -->
       </div>
 
     </div>
