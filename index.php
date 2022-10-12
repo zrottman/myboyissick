@@ -38,8 +38,8 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:title" content="My boy is sick." />
-    <meta property="og:url" content="http://datadoodad.com/myboyissick-dev" />
-    <meta property="og:image" content="http://datadoodad.com/myboyissick-dev/resources/images/og-image.jpg" />
+    <meta property="og:url" content="http://myboyissick.com" />
+    <meta property="og:image" content="http://myboyissick.com/resources/images/og-image.jpg" />
 
     <link href='./resources/css/reset.css' rel='stylesheet'>
     <link href='./resources/css/style.css' rel='stylesheet'>
