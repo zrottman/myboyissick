@@ -38,18 +38,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='./resources/css/reset.css' rel='stylesheet'>
     <link href='./resources/css/style.css' rel='stylesheet'>
-    <script>
-      function toggle (buttonID, boxClass) {
-          const button = document.querySelector(buttonID);
-          const boxes = document.querySelectorAll(boxClass);
-
-          button.style.opacity = button.style.opacity ==  .5 ? 1 : .5;
-
-          boxes.forEach(box => {
-            box.style.display = box.style.display == 'none' ? 'block' : 'none';
-          });
-      }
-    </script>
+    <script type="text/javascript" src="./resources/js/scripts.js"></script>
     <title>He's sick!</title>
   </head>
 
@@ -88,7 +77,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
         $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
 
         echo "<div></div>\n";
-        echo "<div class=\"bold tooltip\">Record (S-NS)<span class=\"tooltiptext\">S: days sick<br>NS: days not sick</span></div>\n";
+        echo "<div class=\"bold tooltip\">Record<span class=\"tooltiptext\">S: days sick<br>NS: days not sick</span></div>\n";
         echo "<div class=\"bold tooltip\">.SAVG<span class=\"tooltiptext\">S / (S + NS)</span></div>\n";
         echo "<div class=\"bold tooltip\">S/NS Ratio<span class=\"tooltiptext\">S / NS</span></div>\n";
 
