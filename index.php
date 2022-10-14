@@ -4,7 +4,7 @@
 require_once ('../../dbconnect/mysqli_connect_myboyissick.php');
 
 # Grid generation query
-$q_grid = "SELECT myboy, papa, mama FROM sick";
+$q_grid = "SELECT myboy, papa, mama FROM sick WHERE date <= CURDATE()";
 $r_grid = @mysqli_query ($dbc, $q_grid);
 
 # Stats query
@@ -23,7 +23,8 @@ $q_stats = "SELECT
                 COUNT(*) - SUM(mama) AS w_m,
                 AVG(mama) AS savg_m,
                 SUM(mama) / (COUNT(*) - SUM(mama)) AS sw_m
-            FROM sick";
+            FROM sick
+            WHERE date <= CURDATE()";
 $r_stats = @mysqli_query ($dbc, $q_stats);
 
 ?>
