@@ -88,7 +88,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
         $stats = mysqli_fetch_array($r_stats, MYSQLI_ASSOC);
 
         echo "<div></div>\n";
-        echo "<div class=\"bold tooltip\">Record<span class=\"tooltiptext\">S: days sick<br>NS: days not sick</span></div>\n";
+        echo "<div class=\"bold tooltip\">Record<span class=\"tooltiptext\">Days Sick (S) - Days Not Sick (NS)</span></div>\n";
         echo "<div class=\"bold tooltip\">.SAVG<span class=\"tooltiptext\">S / (S + NS)</span></div>\n";
         echo "<div class=\"bold tooltip\">S/NS Ratio<span class=\"tooltiptext\">S / NS</span></div>\n";
 
