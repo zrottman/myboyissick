@@ -51,6 +51,15 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./favicon/site.webmanifest">
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0GFKV396E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-W0GFKV396E');
+    </script>
+
     <title>He's sick!</title>
   </head>
 
