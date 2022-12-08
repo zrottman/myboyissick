@@ -68,7 +68,7 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
 
       <div id="header">
         <p>My boy started school.<br>
-        My boy is sick.<br>
+        <strike>My boy is sick.</strike> Lately my boy is not so sick.<br>
         How sick?</p>
       </div>
 
