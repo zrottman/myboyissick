@@ -77,12 +77,12 @@ $r_stats_30d = @mysqli_query ($dbc, $q_stats_30d);
       <?php
         $stats_30d = mysqli_fetch_array($r_stats_30d, MYSQLI_ASSOC);
         
-        if ($stats_30d > .5) {
+        if ($stats_30d['avg_30d'] > .5) {
             $headline = "My boy is sick.";
-        } elseif ($stats_30d > .2) {
-            $headline = "<strike>My boy is sick.</strike>Lately my boy is moderately sick.";
+        } elseif ($stats_30d['avg_30d'] > .2) {
+            $headline = "<strike>My boy is sick.</strike> Lately my boy is a bit sick.";
         } else {
-            $headline = "<strike>My boy is sick.</strike>Lately my boy is not so sick.";
+            $headline = "<strike>My boy is sick.</strike> Lately my boy is not so sick.";
         }
 
         echo "<p>My boy started school.<br>\n";
