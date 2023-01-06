@@ -7,7 +7,7 @@ require_once ('../../dbconnect/mysqli_connect_myboyissick.php');
 $q_grid = "SELECT myboy, papa, mama FROM sick WHERE date <= CURDATE()";
 $r_grid = @mysqli_query ($dbc, $q_grid);
 
-# Stats query
+# Full stats query
 $q_stats = "SELECT
                 SUM(myboy) AS s_b,
                 COUNT(*) - SUM(myboy) AS w_b,
@@ -26,6 +26,13 @@ $q_stats = "SELECT
             FROM sick
             WHERE date <= CURDATE()";
 $r_stats = @mysqli_query ($dbc, $q_stats);
+
+# Abbreviated 30-day stats query
+$q_stats_30d = "SELECT 
+                    AVG(myboy) as avg_30d
+                FROM sick 
+                WHERE date BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE()";
+$r_stats_30d = @mysqli_query ($dbc, $q_stats_30d);
 
 ?>
 
@@ -67,9 +74,21 @@ $r_stats = @mysqli_query ($dbc, $q_stats);
     <div id="wrapper">
 
       <div id="header">
-        <p>My boy started school.<br>
-        <strike>My boy is sick.</strike> Lately my boy is not so sick.<br>
-        How sick?</p>
+      <?php
+        $stats_30d = mysqli_fetch_array($r_stats_30d, MYSQLI_ASSOC);
+        
+        if ($stats_30d > .5) {
+            $headline = "My boy is sick.";
+        } elseif ($stats_30d > .2) {
+            $headline = "<strike>My boy is sick.</strike>Lately my boy is moderately sick.";
+        } else {
+            $headline = "<strike>My boy is sick.</strike>Lately my boy is not so sick.";
+        }
+
+        echo "<p>My boy started school.<br>\n";
+        echo $headline . "<br>\n";
+        echo "How sick?</p>\n";
+      ?>
       </div>
 
       <div id="filters">
